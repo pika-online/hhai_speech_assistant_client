@@ -17,7 +17,7 @@ class Speech_Assistant():
                  uri_kws="ws://47.96.15.141:10094",
                  uri_asr="wss://47.96.15.141:10095",
                  uri_nlu="http://47.96.15.141:10096",
-                 words_kws=['小新小新', '鸿合科技'],
+                 words_kws=['小新小新', '小爱同学'],
                  words_asr={"鸿合科技":20},
                  words_nlu=[]) -> None:
         """
