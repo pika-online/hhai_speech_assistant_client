@@ -14,11 +14,11 @@ class Speech_Assistant():
     """
 
     def __init__(self,
-                 uri_kws="ws://47.96.15.141:10094",
-                 uri_asr="wss://47.96.15.141:10095",
-                 uri_nlu="http://47.96.15.141:10096",
+                 uri_kws="ws://0.0.0.0:10094",
+                 uri_asr="wss://0.0.0.0:10095",
+                 uri_nlu="http://0.0.0.0:10096",
                  words_kws=['小新小新', '小爱同学'],
-                 words_asr={"鸿合科技":20},
+                 words_asr={"小米手机":20},
                  words_nlu=[]) -> None:
         """
         Initializes the Speech Assistant with URLs and keyword configurations.
