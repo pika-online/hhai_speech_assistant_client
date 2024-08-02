@@ -12,7 +12,7 @@ class KeywordSpottingAssistant:
 
     def __init__(self,
                  uri_kws="ws://47.96.15.141:10094",
-                 words_kws=['小新小新', '鸿合科技']) -> None:
+                 words_kws=['小新小新', '小爱同学']) -> None:
         """
         Initializes the KWS Assistant with the WebSocket URL and keyword configurations.
         
