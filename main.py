@@ -252,7 +252,8 @@ if __name__ == "__main__":
         words_nlu = [line.strip() for line in words_nlu]
 
     # Instantiate and run the Speech Assistant
-    host = 'www.funsound.cn'
+    host = '47.96.15.141'
+    # host = 'www.funsound.cn'
     assistant = Speech_Assistant(uri_kws=f"ws://{host}:10094",
                                  uri_asr=f"wss://{host}:10095",
                                  uri_nlu=f"http://{host}:10096",

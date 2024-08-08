@@ -43,8 +43,8 @@ class SpeechRecognitionAssistant:
         """Initialize ASR model by sending configuration."""
         conf = {
             "mode": "2pass",
-            "chunk_size": [5, 16, 5],
-            "chunk_interval": 15,
+            "chunk_size": [5, 10, 5],
+            "chunk_interval": 10,
             "encoder_chunk_look_back": 4,
             "decoder_chunk_look_back": 0,
             "wav_name": "microphone",
@@ -52,6 +52,7 @@ class SpeechRecognitionAssistant:
             "itn": True,
             "is_speaking": True
         }
+        print(conf)
         await self.ws_session_asr.send(json.dumps(conf))
         print("Successfully initialized ASR model")
 
@@ -86,8 +87,8 @@ class SpeechRecognitionAssistant:
         # Initialize the ASR model
         await self.init_model_asr()
 
-        chunk_size_unit = 1024
-        chunk_size_asr = 1024
+        chunk_size_unit = 320
+        chunk_size_asr = 960
         asr_times = chunk_size_asr // chunk_size_unit
         asr_queue = queue.Queue()
 
@@ -135,5 +136,5 @@ if __name__ == "__main__":
             words_asr_dct[word] = int(weight)
 
     # Instantiate and run the Speech Recognition Assistant
-    assistant = SpeechRecognitionAssistant(uri_asr="wss://www.funsound.cn:10095", words_asr=words_asr_dct)
+    assistant = SpeechRecognitionAssistant(uri_asr="wss://47.96.15.141:10095", words_asr=words_asr_dct)
     asyncio.get_event_loop().run_until_complete(assistant.run())

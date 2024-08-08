@@ -4,6 +4,7 @@ import json
 import queue
 import sounddevice as sd
 import numpy as np
+import base64
 
 class KeywordSpottingAssistant:
     """
@@ -93,9 +94,12 @@ class KeywordSpottingAssistant:
                             kws_data = []
                             for _ in range(kws_times):
                                 kws_data.extend(kws_queue.get())
+                            # samples = kws_data
+                            
+                            samples = base64.b64encode(np.array(kws_data,dtype='int16').tobytes()).decode('utf-8')
                             data = {
                                 "remote": 'listen',
-                                "samples": kws_data,
+                                "samples": samples,
                                 "sample_rate": self.sample_rate
                             }
                             await self.ws_session_kws.send(json.dumps(data))
@@ -105,6 +109,7 @@ class KeywordSpottingAssistant:
         except KeyboardInterrupt:
             print("Recording stopped.")
         except Exception as e:
+            raise e
             print(f"An error occurred: {e}")
         finally:
             receive_task_kws.cancel()
