@@ -94,9 +94,8 @@ class KeywordSpottingAssistant:
                             kws_data = []
                             for _ in range(kws_times):
                                 kws_data.extend(kws_queue.get())
-                            # samples = kws_data
-                            
-                            samples = base64.b64encode(np.array(kws_data,dtype='int16').tobytes()).decode('utf-8')
+                            samples = kws_data                            
+                            # samples = base64.b64encode(np.array(kws_data,dtype='int16').tobytes()).decode('utf-8')
                             data = {
                                 "remote": 'listen',
                                 "samples": samples,
